@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:math_research/widgets/drawerTiles.dart';
 
 class navigationWidget extends StatelessWidget {
@@ -31,7 +32,7 @@ class navigationWidget extends StatelessWidget {
         drawerTiles(icon: Icon(Icons.wysiwyg_sharp), title: "Results"),
         drawerTiles(icon: Icon(Icons.read_more), title: "Research"),
         drawerTiles(icon: Icon(Icons.search), title: "Scan Now"),
-        drawerTiles(icon: Icon(Icons.call), title: "Contact Us"),
+        drawerTiles(icon: Icon(FontAwesomeIcons.linkedin), title: "Contact Us"),
       ],
     );
   }
