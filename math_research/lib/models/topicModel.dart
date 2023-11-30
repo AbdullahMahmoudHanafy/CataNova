@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:lorem_ipsum/lorem_ipsum.dart';
 
 class topicModel extends StatelessWidget {
-  const topicModel({required this.topicTitle});
+  const topicModel({required this.topicTitle, required this.topicImage});
 
   final String topicTitle;
+  final String topicImage;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class topicModel extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              "assets/images/eye to eye.jpg",
+              topicImage,
               scale: 2,
             ),
           ),

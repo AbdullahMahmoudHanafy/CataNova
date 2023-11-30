@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:math_research/models/topicModel.dart';
+import 'package:math_research/pages/uploadImagePage.dart';
 import 'package:math_research/widgets/ContactUsWidget.dart';
-import 'package:math_research/widgets/NavigationWidget.dart';
 import 'package:math_research/widgets/titleWidget.dart';
 
 class mainPage extends StatelessWidget {
@@ -89,7 +89,14 @@ class mainPage extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                      onPressed: () => scrollToItem(ScanNowKey),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UploadImagePage(),
+                          ),
+                        );
+                      },
                       child: const Text(
                         "Scan Now",
                         style: TextStyle(
@@ -127,27 +134,42 @@ class mainPage extends StatelessWidget {
           children: [
             Container(
               key: EyeDiseaseKey,
-              child: const topicModel(topicTitle: "Eye Disease"),
+              child: const topicModel(
+                topicTitle: "Eye Disease",
+                topicImage: "assets/images/eye to eye.jpg",
+              ),
             ),
             const SizedBox(height: 20),
             Container(
               key: MethodolgyKey,
-              child: const topicModel(topicTitle: "Methodology"),
+              child: const topicModel(
+                topicTitle: "Methodology",
+                topicImage: "assets/images/metho.jpeg",
+              ),
             ),
             const SizedBox(height: 20),
             Container(
               key: ResultsKey,
-              child: const topicModel(topicTitle: "Results"),
+              child: const topicModel(
+                topicTitle: "Results",
+                topicImage: "assets/images/R.png",
+              ),
             ),
             const SizedBox(height: 20),
             Container(
               key: ResearchKey,
-              child: const topicModel(topicTitle: "Research"),
+              child: const topicModel(
+                topicTitle: "Research",
+                topicImage: "assets/images/research.jpeg",
+              ),
             ),
             const SizedBox(height: 20),
             Container(
               key: ScanNowKey,
-              child: const topicModel(topicTitle: "Scan Now"),
+              child: const topicModel(
+                topicTitle: "Scan Now",
+                topicImage: "assets/images/eyeScanning.jpeg",
+              ),
             ),
             const SizedBox(height: 20),
             Container(
