@@ -1,183 +1,186 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types
-
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:math_research/models/topicModel.dart';
-import 'package:math_research/pages/uploadImagePage.dart';
-import 'package:math_research/widgets/ContactUsWidget.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:math_research/definitionsOfDiseases/cataractDefinitionWidget.dart';
+import 'package:math_research/definitionsOfDiseases/diabeticRetinopathyDefinitionWidget.dart';
+import 'package:math_research/definitionsOfDiseases/glaucomaDefinitionWidget.dart';
+import 'package:math_research/widgets/NavigationWidget.dart';
 import 'package:math_research/widgets/titleWidget.dart';
 
-class mainPage extends StatelessWidget {
-  mainPage({super.key});
+Future<String> uploadFile(XFile imageFile) async {
+  Dio dio = Dio();
 
-  final EyeDiseaseKey = GlobalKey();
-  final MethodolgyKey = GlobalKey();
-  final ResultsKey = GlobalKey();
-  final ResearchKey = GlobalKey();
-  final ScanNowKey = GlobalKey();
-  final ContactUsKey = GlobalKey();
+  var url = "https://dlmodel-001-site1.btempurl.com/api/Model";
 
-  scrollToItem(para) {
-    final context = para.currentContext!;
-    Scrollable.ensureVisible(context, duration: const Duration(seconds: 1));
+  var filePath = imageFile.path;
+  var file = await MultipartFile.fromFile(filePath);
+
+  var formData = FormData.fromMap({"image": file});
+
+  try {
+    var response = await dio.post(
+      url,
+      data: formData,
+    );
+    final responseBody = response.data.toString();
+    print(response.data);
+    return responseBody;
+  } catch (e) {
+    print("Error:$e");
+    throw Error;
+  }
+}
+
+Future<XFile?> selectImage() async {
+  final ImagePicker _picker = ImagePicker();
+  final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+  return image;
+}
+
+class mainPage extends StatefulWidget {
+  const mainPage({super.key});
+
+  @override
+  State<mainPage> createState() => _mainPageState();
+}
+
+class _mainPageState extends State<mainPage> {
+  String responseString = '';
+  int loading = -1;
+
+  void processImage() async {
+    XFile? image = await selectImage();
+    if (image != null) {
+      try {
+        loading = 1;
+        setState(() {
+          loading = 1;
+        });
+        String response = await uploadFile(image);
+        setState(() {
+          responseString = response;
+          responseString = responseString.replaceFirst(
+              responseString[0], responseString[0].toUpperCase());
+          loading = 0;
+        });
+      } catch (error) {}
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffCFD4D7),
       appBar: AppBar(
-        toolbarHeight: 80,
-        iconTheme: const IconThemeData(color: Colors.black, size: 40),
-        backgroundColor: Colors.white,
-        title: Column(
+        iconTheme: const IconThemeData(color: Colors.black, size: 35),
+        backgroundColor: Color(0xffFBFBFB),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text("  "),
-                Image.asset(
-                  "assets/images/1.jpg",
-                  scale: 5,
-                ),
-                const titleWidget(),
-              ],
+            Image.asset(
+              "assets/images/finallogo.jpg",
+              scale: 13,
             ),
-            Container(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Container(
-                  color: Colors.white,
-                  child: Row(children: [
-                    TextButton(
-                      onPressed: () => scrollToItem(EyeDiseaseKey),
-                      child: const Text(
-                        "Eye Disease",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            backgroundColor: Colors.white),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () => scrollToItem(MethodolgyKey),
-                      child: const Text(
-                        "Methodology",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            backgroundColor: Colors.white),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () => scrollToItem(ResultsKey),
-                      child: const Text(
-                        "Results",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            backgroundColor: Colors.white),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () => scrollToItem(ResearchKey),
-                      child: const Text(
-                        "Research",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            backgroundColor: Colors.white),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => UploadImagePage(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        "Scan Now",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            backgroundColor: Colors.white),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () => scrollToItem(ContactUsKey),
-                      child: const Text(
-                        "Contact Us",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            backgroundColor: Colors.white),
-                      ),
-                    ),
-                    // buttonModel(buttonText: "Eye Disease",buttonKey: EyeDiseaseKey,),
-                    // buttonModel(buttonText: "Methodology",buttonKey: MethodolgyKey,),
-                    // buttonModel(buttonText: "Results",buttonKey: ResultsKey,),
-                    // buttonModel(buttonText: "Research",buttonKey: ResearchKey,),
-                    // buttonModel(buttonText: "Scan Now",buttonKey: ScanNowKey,),
-                    // buttonModel(buttonText: "Contact Us",buttonKey: ContactUsKey,),
-                  ]),
-                ),
-              ),
-            )
+            const titleWidget(),
           ],
         ),
       ),
-      // drawer: const navigationWidget(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              key: EyeDiseaseKey,
-              child: const topicModel(
-                topicTitle: "Eye Disease",
-                topicImage: "assets/images/eye to eye.jpg",
+      drawer: const navigationWidget(),
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage("assets/images/thirdAppBackground.jpg"),
+                fit: BoxFit.fill)),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const cataractDefinitionWidget(),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              const glaucomaDefinitionWidget(),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              const diabeticRetinopathyDefinitionWidget(),
+              // const SizedBox(
+              //   height: 10,
+              // ),
+              Container(
+                // color: Colors.white,
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Text(
+                      "Scan Now",
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        shadows: <Shadow>[
+                          Shadow(
+                            offset: Offset(10.0, 10.0),
+                            blurRadius: 3.0,
+                            color: Colors.grey,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    TextButton(
+                      style: ButtonStyle(
+                          shape:
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                              side: const BorderSide(color: Colors.green),
+                            ),
+                          ),
+                          backgroundColor: MaterialStateColor.resolveWith(
+                              (states) => Colors.green)),
+                      onPressed: processImage,
+                      child: const Text(
+                        'Select an image',
+                        style: TextStyle(fontSize: 18, color: Colors.black),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    if (loading == -1)
+                      const Text(
+                        "No image selected",
+                        style: TextStyle(fontSize: 18),
+                      )
+                    else if (loading == 1)
+                      const Text(
+                        "Loading...",
+                        style: TextStyle(fontSize: 18),
+                      )
+                    else if (responseString != "Diabetic_retinopathy")
+                      Text(
+                        "Identified as $responseString",
+                        style: const TextStyle(fontSize: 18),
+                      )
+                    else
+                      const Text(
+                        "Identified as Diabetic Retinopathy",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              key: MethodolgyKey,
-              child: const topicModel(
-                topicTitle: "Methodology",
-                topicImage: "assets/images/metho.jpeg",
+              const SizedBox(
+                height: 10,
               ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              key: ResultsKey,
-              child: const topicModel(
-                topicTitle: "Results",
-                topicImage: "assets/images/R.png",
-              ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              key: ResearchKey,
-              child: const topicModel(
-                topicTitle: "Research",
-                topicImage: "assets/images/research.jpeg",
-              ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              key: ScanNowKey,
-              child: const topicModel(
-                topicTitle: "Scan Now",
-                topicImage: "assets/images/eyeScanning.jpeg",
-              ),
-            ),
-            const SizedBox(height: 20),
-            Container(
-              color: Colors.white,
-              key: ContactUsKey,
-              child: ContactUsidget(),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

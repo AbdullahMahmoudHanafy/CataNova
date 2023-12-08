@@ -9,7 +9,7 @@ class titleWidget extends StatelessWidget {
       children: [
         Text(
           "   C",
-          style: TextStyle(color: Colors.orange),
+          style: TextStyle(color: Colors.green),
         ),
         Text(
           "ata",
@@ -17,7 +17,7 @@ class titleWidget extends StatelessWidget {
         ),
         Text(
           "N",
-          style: TextStyle(color: Colors.orange),
+          style: TextStyle(color: Colors.green),
         ),
         Text(
           "ova",

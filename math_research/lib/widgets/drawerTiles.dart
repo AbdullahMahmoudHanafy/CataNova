@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:math_research/pages/contactUsPage.dart';
+import 'package:math_research/pages/protectionPage.dart';
 
 class drawerTiles extends StatelessWidget {
   const drawerTiles({required this.icon, required this.title});
@@ -11,7 +13,14 @@ class drawerTiles extends StatelessWidget {
     return ListTile(
       leading: icon,
       title: Text(title),
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => contactUsPage(),
+          ),
+        );
+      },
     );
   }
 }

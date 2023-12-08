@@ -8,31 +8,31 @@ class navigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            buildHeader(),
-            buildMenuItems(),
-          ],
-        ),
+      child: new ListView(
+        children: <Widget>[
+          new Container(
+            child: new DrawerHeader(
+                child: new CircleAvatar(
+              radius: 300,
+              backgroundImage: AssetImage("assets/images/finallogo.jpg"),
+            )),
+            color: Colors.white,
+          ),
+          new Container(color: Colors.white, child: buildMenuItems())
+        ],
       ),
     );
   }
 
-  Widget buildHeader() {
-    return Container();
-  }
-
   Widget buildMenuItems() {
-    return Column(
+    return const Column(
       children: [
         drawerTiles(icon: Icon(Icons.home), title: "Home"),
-        drawerTiles(icon: Icon(Icons.settings), title: "Methodology"),
+        drawerTiles(icon: Icon(Icons.healing), title: "Protection"),
         drawerTiles(icon: Icon(Icons.wysiwyg_sharp), title: "Results"),
         drawerTiles(icon: Icon(Icons.read_more), title: "Research"),
         drawerTiles(icon: Icon(Icons.search), title: "Scan Now"),
-        drawerTiles(icon: Icon(FontAwesomeIcons.linkedin), title: "Contact Us"),
+        drawerTiles(icon: Icon(FontAwesomeIcons.phone), title: "Contact Us"),
       ],
     );
   }

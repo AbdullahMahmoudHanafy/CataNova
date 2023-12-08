@@ -17,7 +17,7 @@ class memberModel extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        border: Border.all(color: Colors.orange, width: 3),
+        border: Border.all(color: Colors.green, width: 3),
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       height: 80,

@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:math_research/models/memberModel.dart';
 
-class ContactUsidget extends StatelessWidget {
-  const ContactUsidget({super.key});
+class ContactUsWidget extends StatelessWidget {
+  const ContactUsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
           padding: EdgeInsets.all(16.0),
-          child: Text(
-            "Contact Us",
-            style: TextStyle(color: Colors.orange, fontSize: 20),
-          ),
+          // child: Text(
+          //   "Contact Us",
+          //   style: TextStyle(
+          //     fontSize: 24,
+          //     color: Colors.black,
+          //     fontWeight: FontWeight.bold,
+          //     shadows: <Shadow>[
+          //       Shadow(
+          //         offset: Offset(10.0, 10.0),
+          //         blurRadius: 3.0,
+          //         color: Colors.grey,
+          //       ),
+          //     ],
+          //   ),
+          // ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
