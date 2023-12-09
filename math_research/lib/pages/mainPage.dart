@@ -86,6 +86,8 @@ class _mainPageState extends State<mainPage> {
       ),
       drawer: const navigationWidget(),
       body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
+        height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/images/thirdAppBackground.jpg"),
@@ -95,17 +97,8 @@ class _mainPageState extends State<mainPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const cataractDefinitionWidget(),
-              // const SizedBox(
-              //   height: 10,
-              // ),
               const glaucomaDefinitionWidget(),
-              // const SizedBox(
-              //   height: 10,
-              // ),
               const diabeticRetinopathyDefinitionWidget(),
-              // const SizedBox(
-              //   height: 10,
-              // ),
               Container(
                 // color: Colors.white,
                 width: double.infinity,

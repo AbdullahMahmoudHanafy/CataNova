@@ -41,6 +41,12 @@ dependencies:
   url_launcher: ^6.2.1
   image_picker: ^1.0.4
   dio: ^5.3.4
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  image_path: "assets/images/finallogo.jpg"
+  android: true
+  ios: true
 
 dev_dependencies:
   flutter_test:

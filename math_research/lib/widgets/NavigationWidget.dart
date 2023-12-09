@@ -8,17 +8,17 @@ class navigationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: new ListView(
+      child: ListView(
         children: <Widget>[
-          new Container(
-            child: new DrawerHeader(
-                child: new CircleAvatar(
+          Container(
+            color: Colors.white,
+            child: const DrawerHeader(
+                child: CircleAvatar(
               radius: 300,
               backgroundImage: AssetImage("assets/images/finallogo.jpg"),
             )),
-            color: Colors.white,
           ),
-          new Container(color: Colors.white, child: buildMenuItems())
+          Container(color: Colors.white, child: buildMenuItems())
         ],
       ),
     );
@@ -27,12 +27,10 @@ class navigationWidget extends StatelessWidget {
   Widget buildMenuItems() {
     return const Column(
       children: [
-        drawerTiles(icon: Icon(Icons.home), title: "Home"),
+        drawerTiles(icon: Icon(Icons.wysiwyg_sharp), title: "Model"),
         drawerTiles(icon: Icon(Icons.healing), title: "Protection"),
-        drawerTiles(icon: Icon(Icons.wysiwyg_sharp), title: "Results"),
-        drawerTiles(icon: Icon(Icons.read_more), title: "Research"),
-        drawerTiles(icon: Icon(Icons.search), title: "Scan Now"),
-        drawerTiles(icon: Icon(FontAwesomeIcons.phone), title: "Contact Us"),
+        drawerTiles(icon: Icon(Icons.search), title: "Future Work"),
+        drawerTiles(icon: Icon(FontAwesomeIcons.person), title: "About Us"),
       ],
     );
   }

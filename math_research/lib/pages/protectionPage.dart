@@ -13,9 +13,13 @@ class protectionPage extends StatelessWidget {
         automaticallyImplyLeading: true,
         iconTheme: const IconThemeData(color: Colors.black, size: 35),
         backgroundColor: Colors.white,
-        title: Text("Protection"),
+        title: Text(
+          "Protection",
+          style: TextStyle(color: Colors.black),
+        ),
       ),
       body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10),
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(
