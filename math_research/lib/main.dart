@@ -22,7 +22,7 @@ class CataNova extends StatelessWidget {
         'About Us': (context) => const contactUsPage(),
       },
       debugShowCheckedModeBanner: false,
-      home: mainPage(),
+      home: const mainPage(),
     );
   }
 }

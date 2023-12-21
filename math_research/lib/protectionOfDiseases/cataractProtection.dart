@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, avoid_unnecessary_containers
+
 import 'package:flutter/material.dart';
 
 class CataractProtection extends StatelessWidget {
@@ -58,7 +60,7 @@ class CataractProtection extends StatelessWidget {
             height: 10,
           ),
           Text(
-            "Avoid smoking. Chemicals in cigarette smoke can have a negative effect on many parts of your body, including your eyes. People who smoke have a two to three timesTrusted Source higher risk of developing cataracts than nonsmokers.",
+            "Avoid smoking. Chemicals in cigarette smoke can have a negative effect on many parts of your body, including your eyes. People who smoke have a two to three times Trusted Source higher risk of developing cataracts than nonsmokers.",
             style: TextStyle(fontSize: 18),
           ),
           SizedBox(

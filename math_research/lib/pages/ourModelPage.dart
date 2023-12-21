@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, camel_case_types
+
 import 'package:flutter/material.dart';
 
 class ourModelPage extends StatelessWidget {
@@ -10,13 +12,13 @@ class ourModelPage extends StatelessWidget {
         automaticallyImplyLeading: true,
         iconTheme: const IconThemeData(color: Colors.black, size: 35),
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           "Model",
           style: TextStyle(color: Colors.black),
         ),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(
@@ -74,14 +76,14 @@ class ourModelPage extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                "The Eye Disease Classification model demonstrated robust performance across multiple eye disease categories. The following metrics were calculated for each class:",
+                "The Eye Disease Classification model demonstrated robust performance across multiple eye disease categories. The model exhibited highly satisfying results, reaching a minimum validation loss of 0.3127 and an accuracy of 91.46% at its best epoch",
                 style: TextStyle(fontSize: 18),
               ),
               SizedBox(
                 height: 10,
               ),
               Image(
-                image: AssetImage("assets/images/model first image.png"),
+                image: AssetImage("assets/images/eye disease acc.png"),
               ),
               SizedBox(
                 height: 10,
@@ -89,12 +91,6 @@ class ourModelPage extends StatelessWidget {
               Text(
                 "The model was evaluated on an independent test set, confirming its real-world applicability.",
                 style: TextStyle(fontSize: 18),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Image(
-                image: AssetImage("assets/images/model second image.png"),
               ),
               SizedBox(
                 height: 10,

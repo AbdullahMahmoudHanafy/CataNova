@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, camel_case_types, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -18,7 +20,7 @@ class memberModel extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: Colors.green, width: 3),
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
       ),
       height: 80,
       width: 150,
@@ -26,7 +28,7 @@ class memberModel extends StatelessWidget {
           Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
         Text(
           memberName,
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -36,7 +38,7 @@ class memberModel extends StatelessWidget {
                 Uri url = Uri.parse(memberLinkedIn);
                 launchUrl(url);
               },
-              child: Icon(FontAwesomeIcons.linkedin),
+              child: const Icon(FontAwesomeIcons.linkedin),
             ),
             InkWell(
               onTap: () {

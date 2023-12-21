@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:math_research/models/memberModel.dart';
 
@@ -11,21 +13,6 @@ class ContactUsWidget extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.all(16.0),
-          // child: Text(
-          //   "Contact Us",
-          //   style: TextStyle(
-          //     fontSize: 24,
-          //     color: Colors.black,
-          //     fontWeight: FontWeight.bold,
-          //     shadows: <Shadow>[
-          //       Shadow(
-          //         offset: Offset(10.0, 10.0),
-          //         blurRadius: 3.0,
-          //         color: Colors.grey,
-          //       ),
-          //     ],
-          //   ),
-          // ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

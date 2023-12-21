@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, no_leading_underscores_for_local_identifiers, camel_case_types, sized_box_for_whitespace
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,10 +25,8 @@ Future<String> uploadFile(XFile imageFile) async {
       data: formData,
     );
     final responseBody = response.data.toString();
-    print(response.data);
     return responseBody;
   } catch (e) {
-    print("Error:$e");
     throw Error;
   }
 }
@@ -63,7 +63,9 @@ class _mainPageState extends State<mainPage> {
               responseString[0], responseString[0].toUpperCase());
           loading = 0;
         });
-      } catch (error) {}
+      } catch (error) {
+        throw Exception("Error");
+      }
     }
   }
 
@@ -72,7 +74,7 @@ class _mainPageState extends State<mainPage> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black, size: 35),
-        backgroundColor: Color(0xffFBFBFB),
+        backgroundColor: const Color(0xffFBFBFB),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -86,7 +88,7 @@ class _mainPageState extends State<mainPage> {
       ),
       drawer: const navigationWidget(),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         height: double.infinity,
         decoration: const BoxDecoration(
             image: DecorationImage(
@@ -100,7 +102,6 @@ class _mainPageState extends State<mainPage> {
               const glaucomaDefinitionWidget(),
               const diabeticRetinopathyDefinitionWidget(),
               Container(
-                // color: Colors.white,
                 width: double.infinity,
                 child: Column(
                   children: [

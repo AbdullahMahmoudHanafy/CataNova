@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:math_research/widgets/ContactUsWidget.dart';
 
@@ -17,7 +19,7 @@ class contactUsPage extends StatelessWidget {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         width: double.infinity,
         height: double.infinity,
         decoration: const BoxDecoration(

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:math_research/protectionOfDiseases/cataractProtection.dart';
 import 'package:math_research/protectionOfDiseases/diabeticRetinopathyProtection.dart';
@@ -13,13 +15,13 @@ class protectionPage extends StatelessWidget {
         automaticallyImplyLeading: true,
         iconTheme: const IconThemeData(color: Colors.black, size: 35),
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           "Protection",
           style: TextStyle(color: Colors.black),
         ),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         width: double.infinity,
         decoration: const BoxDecoration(
           image: DecorationImage(

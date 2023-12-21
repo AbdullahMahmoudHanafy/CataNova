@@ -1,3 +1,6 @@
+// ignore: file_names
+// ignore_for_file: camel_case_types, file_names, duplicate_ignore
+
 import 'package:flutter/material.dart';
 
 class titleWidget extends StatelessWidget {
@@ -5,7 +8,7 @@ class titleWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       children: [
         Text(
           "   C",
